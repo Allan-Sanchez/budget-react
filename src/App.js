@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Question from "./components/Question";
 import Form from './components/Form';
 import ListExpense from './components/ListExpense';
@@ -7,14 +7,27 @@ function App() {
   const [budget, setBudget] = useState(0);
   const [remaining, setRemaining] = useState(0);
   const [showQuestion,setShowQuestion] = useState(true);
-  const [expenses,setExpense] = useState([]);
+  const [expenses,setExpenses] = useState([]);
+  const [expense,setExpense] = useState({});
+  const [createExpense, setCreateExpense] = useState(false);
 
-  const addNewExpense =(expense) => {
-      setExpense([
+  useEffect(() => {
+    if (createExpense) {
+      setExpenses([
         ...expenses,
         expense
       ]);
-  };
+
+
+      const budgetRemaining = remaining - expense.quantityExpense;
+      setRemaining(budgetRemaining);
+
+      setCreateExpense(false);
+    }
+    
+  }, [expense,createExpense,remaining,expenses])
+
+  
 
   return (
     <div className="App w-full h-full bg-indigo-800">
@@ -29,7 +42,7 @@ function App() {
           />
         ) : (
           <div className="grid md:grid-cols-2 gap-2 p-10">
-          <Form addNewExpense={addNewExpense}/>
+          <Form setExpense={setExpense} setCreateExpense={setCreateExpense}/>
           <ListExpense expenses={expenses} budget={budget} remaining={remaining}/>
         </div>
         ) }
