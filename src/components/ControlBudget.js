@@ -1,4 +1,6 @@
 import React,{Fragment} from 'react';
+import {reviewBudget} from '../helper';
+
 
 const ControlBudget = ({budget,remaining}) => {
     // console.log(budget)
@@ -14,7 +16,7 @@ const ControlBudget = ({budget,remaining}) => {
                
             </div>
 
-            <div className="flex justify-around items-center bg-red-100  rounded rounded-full p-2 ">
+            <div className={reviewBudget(budget,remaining)}>
                 <div className="text-purple-800 text-md w-1/3">
                     Remaining 
                 </div>
