@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 const Expense = ({item}) => {
   return (
     <div className="flex justify-around items-center mb-3">
@@ -11,5 +12,9 @@ const Expense = ({item}) => {
     </div>
   );
 };
+
+Expense.propTypes ={
+  item : PropTypes.object.isRequired,
+}
 
 export default Expense;

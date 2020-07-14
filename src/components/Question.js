@@ -1,6 +1,8 @@
 import React, { Fragment,useState } from "react";
 import PictureBudget from '../revenue_.svg';
 import Error from "./Error";
+import PropTypes from 'prop-types';
+
 
 const Question = ({setBudget,setRemaining,setShowQuestion}) => {
 
@@ -62,5 +64,11 @@ const addDebt = (e) => {
     </Fragment>
   );
 };
+
+Question.propTypes ={
+  setBudget: PropTypes.func.isRequired,
+  setRemaining: PropTypes.func.isRequired,
+  setShowQuestion: PropTypes.func.isRequired
+}
 
 export default Question;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Expense from './Expense';
 import ControlBudget from './ControlBudget';
+import PropTypes from 'prop-types';
 
 const ListExpense = ({expenses,budget,remaining}) => {
     return ( 
@@ -13,6 +14,12 @@ const ListExpense = ({expenses,budget,remaining}) => {
             <ControlBudget budget={budget} remaining={remaining}/>
         </div>
      );
+}
+
+ListExpense.propTypes ={
+    expenses : PropTypes.array.isRequired,
+    budget : PropTypes.number,
+    remaining: PropTypes.number
 }
  
 export default ListExpense;
